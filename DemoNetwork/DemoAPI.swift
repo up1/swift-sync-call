@@ -2,12 +2,17 @@ import Foundation
 
 class DemoAPI {
     
+    private let session: NSURLSession!
+    
+    init(session: NSURLSession) {
+        self.session = session
+    }
+    
     func process1() -> String {
         var result: String = "ERROR"
         let url = NSURL(string: "http://localhost:8882/step1")!
         let request = NSMutableURLRequest(URL: url)
-        let session = NSURLSession.sharedSession()
-        session.sendSynchronousRequest(request) { data, response, error in
+        self.session.sendSynchronousRequest(request) { data, response, error in
             if let data = data {
                 result = String(data: data, encoding: NSUTF8StringEncoding)!
             } else {
@@ -21,8 +26,7 @@ class DemoAPI {
         var result: String = "ERROR"
         let url = NSURL(string: "http://localhost:8882/step2")!
         let request = NSMutableURLRequest(URL: url)
-        let session = NSURLSession.sharedSession()
-        session.sendSynchronousRequest(request) { data, response, error in
+        self.session.sendSynchronousRequest(request) { data, response, error in
             if let data = data {
                 result = String(data: data, encoding: NSUTF8StringEncoding)!
             } else {
@@ -36,8 +40,7 @@ class DemoAPI {
         var result: String = "ERROR"
         let url = NSURL(string: "http://localhost:8882/step3")!
         let request = NSMutableURLRequest(URL: url)
-        let session = NSURLSession.sharedSession()
-        session.sendSynchronousRequest(request) { data, response, error in
+        self.session.sendSynchronousRequest(request) { data, response, error in
             if let data = data {
                 result = String(data: data, encoding: NSUTF8StringEncoding)!
             } else {

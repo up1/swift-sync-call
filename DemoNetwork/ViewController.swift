@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     }
     
     private func beforeRegisterProcess() {
-        let api = DemoAPI()
+        let session = NSURLSession.sharedSession()
+        let api = DemoAPI(session: session)
         let result = api.process1()
         print(result)
         let result2 = api.process2()
